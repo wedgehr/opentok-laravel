@@ -1,5 +1,5 @@
 {
-    "name": "msmccons/opentok-laravel",
+    "name": "mmsccons/opentok-laravel",
     "description": "A laravel bundle for the OpenTok PHP SDK",
     "keywords": ["opentok", "streaming", "video streaming", "laravel"],
     "homepage": "https://github.com/msmccons/opentok-laravel",
