@@ -60,10 +60,10 @@ class Resolver {
 	{
 		// ensure we have a project with this name
 		if (! array_key_exists($name, $this->projects)) {
-			throw new ProjectNotFoundException(sprinf('Opentok Project "%s" is not defined', $name));
+			throw new ProjectNotFoundException(sprintf('Opentok Project "%s" is not defined', $name));
 		}
 
-		return $this->app->make(sprinf('Opentok-%s', $name));
+		return $this->app->make(sprintf('Opentok-%s', $name));
 	}
 
 	/**
@@ -91,7 +91,7 @@ class Resolver {
 	private function initProjects()
 	{
 		foreach ($this->projects as $name => $project) {
-			$this->app->singleton(sprintf('Opentok-%s', $name), function($app) {
+			$this->app->singleton(sprintf('Opentok-%s', $name), function($app) use ($project) {
 				return new OpenTokApi(
 					$project['api-key'],
 					$project['api-secret']
