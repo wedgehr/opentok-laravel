@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Tomcorbett\\OpentokLaravel\\": "src/"
+            "OpentokLaravel\\": "src/"
         }
     },
     "minimum-stability": "stable"
