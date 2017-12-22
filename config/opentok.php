@@ -1,7 +1,7 @@
 <?php
 
 return [
-	// default project
+	// default project name, as listed within 'projects' below
 	'default' => 'default',
 
 	// a list of the projects we know about
