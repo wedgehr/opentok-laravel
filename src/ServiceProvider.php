@@ -10,8 +10,7 @@ class ServiceProvider extends BaseServiceProvider {
 	 *
 	 * @var bool
 	 */
-	protected $defer = true;
-
+	protected $defer = false;
 
 	/**
 	 * Register the service provider.
@@ -23,17 +22,17 @@ class ServiceProvider extends BaseServiceProvider {
 		$this->mergeConfigFrom($this->configPath(), 'opentok');
 	}
 
-    public function boot()
-    {
-        $this->publishes([$this->configPath() => config_path('opentok.php')], 'config');
+	public function boot()
+	{
+		$this->publishes([$this->configPath() => config_path('opentok.php')], 'config');
 
-        $this->app->singleton('Opentok', function($app) {
+		$this->app->singleton('Opentok', function($app) {
 			return new OpenTokApi(
 				$app['config']->get('opentok')['api_key'],
 				$app['config']->get('opentok')['api_secret']
 			);
 		});
-    }
+	}
 
 	protected function configPath()
 	{
