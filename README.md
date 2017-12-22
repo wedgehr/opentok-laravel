@@ -29,11 +29,11 @@ You can register the OpentokApi facade in the `aliases` key of your `config/app.
 
 ### Configuration
 
-The defaults are set in `config/cors.php'. Copy this file to your own config directory to modify the values. You can publish the config using this command:
+The defaults are set in `config/opentok.php'. Copy this file to your own config directory to modify the values. You can publish the config using this command:
 
     php artisan vendor:publish --provider="OpentokLaravel\ServiceProvider"
 
-Get your api_key and api_secret from your OpenTok account and replace the placeholders in your config file.
+Get your api_key and api_secret from your OpenTok account and replace the placeholders in your config file. To configure multiple projects, see below.
 
 ### Before you dive in...
 
@@ -59,6 +59,7 @@ Please note that you will need to API key on the client side to use in the JS so
 (saves you hardcoding in your JS file or template)
 ```php
 // use the necessary files
+use Config;
 use Opentok; // Facade
 use OpenTok\Role;
 use OpenTokException;
@@ -88,3 +89,19 @@ return View::make('your/view')
 For the JS/HTML etc. for publishing video/audio/messages please see the OpenTok [Quick Start Guide](http://tokbox.com/opentok/quick-start/) and [Documentation](http://tokbox.com/opentok/libraries/client/js/) and take a browse around their How To examples etc. they're pretty good!
 
 Hopefully you will find this library useful, if so please feel free to let me know, and feel free to drop any comments, questions or suggestions to improve!
+
+### Multiple Projects
+
+You may want to define multiple OpenTok projects, for example for Safari 11 support. To add an additional project,
+add the project settings to the config/opentok.php file.
+
+To reference a project by name:
+```php
+// projectName is as defined in the configuration file.
+$session = Opentok::project('projectName')->createSession();
+
+// to access the default project, you can do either
+$session = Opentok::project('defaultProjectName')->createSession();
+// or..
+$session = Opentok::createSession();
+```
