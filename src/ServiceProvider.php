@@ -1,7 +1,7 @@
-<?php namespace Tomcorbett\OpentokLaravel;
+<?php namespace OpentokLaravel;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
-use OpenTok\OpenTok;
+use OpenTok\OpenTok as OpenTokApi;
 
 class ServiceProvider extends BaseServiceProvider {
 
@@ -10,7 +10,7 @@ class ServiceProvider extends BaseServiceProvider {
 	 *
 	 * @var bool
 	 */
-	protected $defer = false;
+	protected $defer = true;
 
 
 	/**
@@ -27,8 +27,8 @@ class ServiceProvider extends BaseServiceProvider {
     {
         $this->publishes([$this->configPath() => config_path('opentok.php')], 'config');
 
-        $this->app->singleton('OpentokApi', function($app) {
-			return new OpenTok(
+        $this->app->singleton('Opentok', function($app) {
+			return new OpenTokApi(
 				$app['config']->get('opentok')['api_key'],
 				$app['config']->get('opentok')['api_secret']
 			);
@@ -36,8 +36,8 @@ class ServiceProvider extends BaseServiceProvider {
     }
 
 	protected function configPath()
-	{   
+	{
 		return __DIR__ . '/../config/opentok.php';
-	}   
+	}
 
 }
