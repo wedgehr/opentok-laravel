@@ -1,38 +1,37 @@
 # OpenTok for Laravel
 This is a Laravel 5 wrapper library for the [OpenTok](http://tokbox.com/opentok/) SDK. OpenTok is a product by TokBox which utilizes WebRTC to enable peer to peer video, audio and messaging.
 Please note: this repository is in *NO WAY* associated with TokBox.
-### For Laravel 4, please use the [1.0 branch](https://github.com/tomcorbett/opentok-laravel/tree/1.0)!
 
 ## Installation
 To get the latest version of OpenTok Laravel, simply require the project using [Composer](https://getcomposer.org):
 
 ```bash
-$ composer require tomcorbett/opentok-laravel
+$ composer require mmsccons/opentok-laravel
 ```
 
 Instead, you may of course manually update your require block and run `composer update` if you so choose:
 
 ```json
 {
-	    "require": {
-			        "tomcorbett/opentok-laravel": "dev-master"
-						    }
+    "require": {
+        "mmsccons/opentok-laravel": "dev-master"
+    }
 }
 ```
 
 Once OpenTok Laravel is installed, you need to register the service provider. Open up `config/app.php` and add the following to the `providers` key.
 
-* `Tomcorbett\OpentokLaravel\ServiceProvider::class`
+* `OpentokLaravel\ServiceProvider::class`
 
 You can register the OpentokApi facade in the `aliases` key of your `config/app.php` file if you like.
 
-* `'OpentokApi' => Tomcorbett\OpentokLaravel\Facades\OpentokApi::class`
+* `'Opentok' => OpentokLaravel\Facades\Opentok::class`
 
 ### Configuration
 
 The defaults are set in `config/cors.php'. Copy this file to your own config directory to modify the values. You can publish the config using this command:
 
-    php artisan vendor:publish --provider="Tomcorbett\OpentokLaravel\ServiceProvider"
+    php artisan vendor:publish --provider="OpentokLaravel\ServiceProvider"
 
 Get your api_key and api_secret from your OpenTok account and replace the placeholders in your config file.
 
@@ -47,7 +46,7 @@ It's definitely a good idea to get to grips with the general flow, the technolog
 First you need to create a session so your subscribers and/or publishers have something to assiciate with
 ```php
 // new session
-$session    = OpentokApi::createSession();            
+$session    = Opentok::createSession();
 $sessionId  = $session->getSessionId();
 
 // check if it's been created or not (could have failed)
@@ -60,17 +59,17 @@ Please note that you will need to API key on the client side to use in the JS so
 (saves you hardcoding in your JS file or template)
 ```php
 // use the necessary files
-use Tomcorbett\OpentokLaravel\Facades\OpentokApi;
+use Opentok; // Facade
 use OpenTok\Role;
 use OpenTokException;
 
 // get your API key from config
 $api_key = Config::get('opentok.api_key');
-        
+
 // then create a token (session created in previous step)
 try {
     // note we're create a publisher token here, for subscriber tokens we would specify.. yep 'subscriber' instead
-    $token = OpentokApi::generateToken($sessionId,
+    $token = Opentok::generateToken($sessionId,
         array(
             'role' => Role::PUBLISHER
         )
