@@ -60,10 +60,32 @@ class Resolver {
 	{
 		// ensure we have a project with this name
 		if (! array_key_exists($name, $this->projects)) {
+			// check if perhaps we were passed an ApiKey as the name
+			if (is_numeric($name)) {
+				return $this->projectByKey($name);
+			}
+
 			throw new ProjectNotFoundException(sprintf('Opentok Project "%s" is not defined', $name));
 		}
 
 		return $this->app->make(sprintf('Opentok-%s', $name));
+	}
+
+	/**
+	 * Resolve a project by its API Key
+	 *
+	 * @param integer $apiKey
+	 */
+	public function projectByKey($apiKey)
+	{
+		foreach ($this->projects as $name => $project) {
+			// lazy eval the keys
+			if ($project['api-key'] == $apiKey) {
+				return $this->app->make(sprintf('Opentok-%s', $name));
+			}
+		}
+
+		throw new ProjectNotFoundException(sprintf('Opentok Project with ApiKey "%d" is not defined', $apiKey));
 	}
 
 	/**
