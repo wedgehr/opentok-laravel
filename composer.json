@@ -1,7 +1,7 @@
 {
     "name": "cumulati/opentok-laravel",
     "description": "A laravel bundle for the OpenTok PHP SDK",
-    "keywords": ["opentok", "streaming", "video streaming", "laravel"],
+    "keywords": ["tokbox", "opentok", "streaming", "video streaming", "laravel"],
     "homepage": "https://github.com/cumulati/opentok-laravel",
     "type": "library",
     "license": "MIT",
