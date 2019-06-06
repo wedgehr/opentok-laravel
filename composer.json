@@ -1,14 +1,14 @@
 {
-    "name": "mmsccons/opentok-laravel",
+    "name": "cumulati/opentok-laravel",
     "description": "A laravel bundle for the OpenTok PHP SDK",
     "keywords": ["opentok", "streaming", "video streaming", "laravel"],
-    "homepage": "https://github.com/msmccons/opentok-laravel",
+    "homepage": "https://github.com/cumulati/opentok-laravel",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
             "name": "Patrick McCarren",
-            "email": "patrick@mmsc.io"
+            "email": "patrick@clops.io"
         }
     ],
     "repositories": [
@@ -17,7 +17,7 @@
     "require": {
         "php": ">=5.4.0",
         "illuminate/support": "5.0.x|5.1.x|5.2.x|5.3.x|5.4.x|5.5.x",
-        "opentok/opentok": "~3.1"
+        "opentok/opentok": "~4.0"
     },
     "autoload": {
         "psr-4": {
