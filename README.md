@@ -6,7 +6,7 @@ Please note: this repository is in *NO WAY* associated with TokBox.
 To get the latest version of OpenTok Laravel, simply require the project using [Composer](https://getcomposer.org):
 
 ```bash
-$ composer require mmsccons/opentok-laravel
+$ composer require wedgehr/opentok-laravel
 ```
 
 Instead, you may of course manually update your require block and run `composer update` if you so choose:
@@ -14,7 +14,7 @@ Instead, you may of course manually update your require block and run `composer 
 ```json
 {
     "require": {
-        "mmsccons/opentok-laravel": "dev-master"
+        "wedgehr/opentok-laravel": "dev-master"
     }
 }
 ```
