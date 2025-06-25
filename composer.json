@@ -1,7 +1,13 @@
 {
     "name": "wedgehr/opentok-laravel",
     "description": "A laravel bundle for the OpenTok PHP SDK",
-    "keywords": ["tokbox", "opentok", "streaming", "video streaming", "laravel"],
+    "keywords": [
+        "tokbox",
+        "opentok",
+        "streaming",
+        "video streaming",
+        "laravel"
+    ],
     "homepage": "https://github.com/wedgehr/opentok-laravel",
     "type": "library",
     "license": "MIT",
@@ -11,12 +17,10 @@
             "email": "patrick@clops.io"
         }
     ],
-    "repositories": [
-
-    ],
+    "repositories": [],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "6.x|7.x|8.x|9.x",
+        "illuminate/support": "6.x|7.x|8.x|9.x|10.x",
         "opentok/opentok": "~4.6"
     },
     "autoload": {
@@ -26,4 +30,3 @@
     },
     "minimum-stability": "stable"
 }
-
