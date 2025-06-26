@@ -20,7 +20,7 @@
     "repositories": [],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "6.x|7.x|8.x|9.x|10.x",
+        "illuminate/support": "6.x|7.x|8.x|9.x|10.x|11.x",
         "opentok/opentok": "~4.6"
     },
     "autoload": {
